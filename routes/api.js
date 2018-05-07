@@ -8,7 +8,7 @@ router.get('/items', (req, res)=>{
 });
 
 router.post('/items', (req, res)=>{
-	//
+	res.send({message: 'post request'});
 });
 
 
