@@ -12,9 +12,10 @@ router.post('/items', (req, res)=>{
 });
 
 
-// router.put(()=>{
-
-// });
+router.put('/items/:id', (req, res)=>{
+	console.log(req.params.id);
+	res.send({message: 'put request'});
+});
 
 // router.delete(()=>{
 
