@@ -13,13 +13,14 @@ router.post('/items', (req, res)=>{
 
 
 router.put('/items/:id', (req, res)=>{
-	console.log(req.params.id);
+	// req.params.id
 	res.send({message: 'put request'});
 });
 
-// router.delete(()=>{
 
-// });
+router.delete('/items/:id', (req, res)=>{
+	res.send({message: 'delete request'});
+});
 
 
 module.exports = router;
