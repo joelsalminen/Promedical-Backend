@@ -7,7 +7,7 @@ const ItemSchema = new Schema({
 		type: String, 
 		required: [true, 'Name field is required']
 	},
-	serial_number: {
+	serial: {
 		type: Number,
 		required: [true, 'Serial number is required']
 	},

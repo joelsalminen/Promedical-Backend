@@ -1,26 +1,36 @@
 const express = require('express');
+const Item = require('../models/item'); // item schema
 
 // setting up the router
 const router = express.Router();
 
 router.get('/items', (req, res)=>{
-	res.send({express: 'Guten Tag'});
+	Item.find({}).then((items)=>{
+		res.send(items);
+	});
 });
 
 router.post('/items', (req, res)=>{
-	res.send({message: 'post request'});
+	Item.create(req.body).then((item)=>{
+		res.send(item);
+	});
 	
+
 });
 
 
 router.put('/items/:id', (req, res)=>{
-	// req.params.id
-	res.send({message: 'put request'});
+	Item.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}).then((item)=>{
+		res.send(item);
+	});
+
 });
 
 
 router.delete('/items/:id', (req, res)=>{
-	res.send({message: 'delete request'});
+	Item.findByIdAndRemove({_id: req.params.id}).then((item)=>{
+		res.send(item);
+	});
 });
 
 
