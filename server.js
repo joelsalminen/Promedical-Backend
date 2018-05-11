@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // parsing data that was received
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.use('/api', require('./routes/api'));
 

@@ -19,6 +19,15 @@ router.post('/items', (req, res)=>{
 });
 
 
+router.post('/test', (req, res)=>{
+	console.log("accepted data");
+	console.log(req.body);
+	res.send(req.body);
+
+});
+
+
+
 router.put('/items/:id', (req, res)=>{
 	Item.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}).then((item)=>{
 		res.send(item);
