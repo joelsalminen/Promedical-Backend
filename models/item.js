@@ -15,7 +15,7 @@ const ItemSchema = new Schema({
 		type: String
 	},
 	expiration: {
-		type: Date
+		type: String
 	}
 
 });
