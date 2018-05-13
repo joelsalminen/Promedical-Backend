@@ -18,6 +18,11 @@ router.post('/items', (req, res)=>{
 
 });
 
+router.post('/lendings', (req, res)=>{
+	console.log(req.body);
+	res.send(req.body);
+});
+
 
 router.put('/items/:id', (req, res)=>{
 	Item.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}).then((item)=>{

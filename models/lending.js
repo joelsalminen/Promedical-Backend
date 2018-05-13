@@ -8,7 +8,7 @@ const LendingSchema = new Schema({
 		type: String,
 		required: [true, 'Lender field is required']
 	},
-	Customer: {
+	customer: {
 		type: Object,
 		required: [true, 'Customer object is required']
 		name: {
