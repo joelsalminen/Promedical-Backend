@@ -13,8 +13,14 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// initialize routes
 app.use('/api', require('./routes/api'));
 
+// error handling
+app.use((err, req, res, next)=>{
+	//console.log(err;
+	res.status(422).send({error: err.message});
+});
 
 
 app.listen(port, () => {
