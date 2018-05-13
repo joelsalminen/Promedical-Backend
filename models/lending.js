@@ -36,13 +36,17 @@ const LendingSchema = new Schema({
 	}
 
 	item: {
-		name: String,
-		required: [true, 'Item name field is required']
+		name: {
+			type: String,
+			required: [true, 'Item name field is required']
+		},
+		serial: {
+			type: Number,
+			required: [true, 'Serial field is required']
+		}
+
 	}
-	serial: {
-		type: Number,
-		required: [true, 'Serial field is required']
-	}
+
 
 });
 
