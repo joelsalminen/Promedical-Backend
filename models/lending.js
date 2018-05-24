@@ -10,9 +10,9 @@ const LendingSchema = new Schema({
 	},
 	customer: {
 		type: Object,
-		required: [true, 'Customer object is required']
+		required: [true, 'Customer object is required'],
 		name: {
-			type: String
+			type: String,
 			required: [true, 'Customer name field is required']
 		},
 		contactInfo: {
@@ -32,13 +32,13 @@ const LendingSchema = new Schema({
 		required: [true, 'Lend type field is required']
 	},
 	price: {
-		type: Double,
-	}
+		type: Number
+	},
 
 	item: {
 		name: {
 			type: String,
-			required: [true, 'Item name field is required']
+			required: [true, 'Item name field is required'],
 		},
 		serial: {
 			type: Number,
