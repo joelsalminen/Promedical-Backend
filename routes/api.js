@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-// routes
+// /api/items routes
 router.get('/items', (req, res)=>{
 	Item.find({}).then((items)=>{
 		res.send(items);
@@ -19,13 +19,6 @@ router.post('/items', (req, res, next)=>{
 	Item.create(req.body).then((item)=>{
 		res.send(item);
 	}).catch(next);
-});
-
-router.post('/lendings', (req, res, next)=>{
-	Lending.create(req.body).then((lending)=>{
-		res.send(req.body);
-	}).catch(next);
-	
 });
 
 
@@ -41,6 +34,20 @@ router.delete('/items/:id', (req, res, next)=>{
 		res.send(item);
 	}).catch(next);
 });
+
+
+
+// /api/lendings routes
+router.post('/lendings', (req, res, next)=>{
+	console.log(req.body);
+	res.send(req.body);
+	// Lending.create(req.body).then((lending)=>{
+	// 	res.send(req.body);
+	// }).catch(next);
+	
+});
+
+
 
 
 module.exports = router;
