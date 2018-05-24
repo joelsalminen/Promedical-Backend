@@ -62,6 +62,12 @@ router.post('/lendings', (req, res, next)=>{
 });
 
 
+router.delete('/lendings/:id', (req, res, next)=>{
+	Lending.findByIdAndRemove({_id: req.params.id}).then((item)=>{
+		res.send(item);
+	}).catch(next);
+});
+
 
 
 module.exports = router;
