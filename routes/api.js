@@ -93,8 +93,20 @@ router.get('/reservations/', (req, res, next)=>{
 
 /* post reservation */
 router.post('/reservations', (req, res, next)=>{
-	Reservation.create(req.body).then((item)=>{
-		res.send(item);
+	/* parse data */
+	const data = {
+		customer: req.body.customer,
+		contactInfo: req.body.contactInfo,
+		startDate: req.body.startDate,
+		returnDate: req.body.returnDate,
+		item: {
+			_id: req.body.itemId,
+			serial: req.body.itemSerial,
+			name: req.body.itemName
+		}
+	}
+	Reservation.create(data).then((item)=>{
+		res.send(data);
 	});
 });
 
