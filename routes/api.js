@@ -111,6 +111,14 @@ router.post('/reservations', (req, res, next)=>{
 });
 
 
+/* delete reservation */
+router.delete('/reservations/:id', (req, res, next)=>{
+	Reservation.findByIdAndRemove({_id: req.params.id}).then((item)=>{
+		res.send(item);
+	}).catch(next);
+});
+
+
 module.exports = router;
 
 
