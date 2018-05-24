@@ -1,6 +1,7 @@
 const express = require('express');
 const Item = require('../models/item'); // item schema
 const Lending = require('../models/lending'); // lending schema
+const Reservation = require('../models/reservation');
 
 /* setting up the router */
 const router = express.Router();
@@ -87,6 +88,13 @@ router.delete('/lendings/:id', (req, res, next)=>{
 router.get('/reservations/', (req, res, next)=>{
 	Reservation.find({}).then((items)=>{
 		res.send(items);
+	});
+});
+
+/* post reservation */
+router.post('/reservations', (req, res, next)=>{
+	Reservation.create(req.body).then((item)=>{
+		res.send(item);
 	});
 });
 
