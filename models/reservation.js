@@ -16,7 +16,6 @@ const ReservationSchema = new Schema({
 		required: [true, 'Return date field is required']
 	},
 	item: {
-		required: [true, 'Item is required'],
 		name: {
 			type: String
 		},
@@ -29,5 +28,5 @@ const ReservationSchema = new Schema({
 	}
 });
 
-const Reservation = mongoose.model('item', ReservationSchema);
+const Reservation = mongoose.model('reservation', ReservationSchema);
 module.exports = Reservation;
