@@ -11,12 +11,6 @@ const ItemSchema = new Schema({
 		type: Number,
 		required: [true, 'Serial number is required']
 	},
-	location: {
-		type: String
-	},
-	expiration: {
-		type: String
-	}
 
 });
 
