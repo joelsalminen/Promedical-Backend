@@ -38,6 +38,14 @@ router.delete('/items/:id', (req, res, next)=>{
 
 
 // /api/lendings routes
+
+router.get('/lendings', (req, res, next)=>{
+	Lending.find({}).then((items)=>{
+		res.send(items);
+	}).catch(next);
+});
+
+
 router.post('/lendings', (req, res, next)=>{
 //	console.log(req.body);
 	const data = {
