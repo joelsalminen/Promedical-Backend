@@ -39,11 +39,25 @@ router.delete('/items/:id', (req, res, next)=>{
 
 // /api/lendings routes
 router.post('/lendings', (req, res, next)=>{
-	console.log(req.body);
-	res.send(req.body);
-	// Lending.create(req.body).then((lending)=>{
-	// 	res.send(req.body);
-	// }).catch(next);
+//	console.log(req.body);
+	const data = {
+		lender: req.body.lender,
+		customer: req.body.customer,
+		contactInfo: req.body.contactInfo,
+		startDate: req.body.startDate,
+		returnDate: req.body.returnDate,
+		lendType: req.body.lendType,
+		price: req.body.price,
+		item: {
+			_id: req.body.itemId,
+			serial: req.body.itemSerial,
+			name: req.body.itemName
+		}
+	};
+	//console.log(data);
+	Lending.create(data).then((lending)=>{
+	res.send(data);
+	}).catch(next);
 	
 });
 
