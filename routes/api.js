@@ -21,7 +21,7 @@ router.route('/items')
 	.get(ItemsController.getItems);
 
 router.route('/items')
-	.post(ItemsController.postItem);
+	.post(validateBody(schemas.itemSchema), ItemsController.postItem);
 
 router.route('/items/:id')
 	.put(ItemsController.putItem);
