@@ -1,14 +1,26 @@
 const express = require('express');
+/* setting up the router */
+const router = require('express-promise-router')();
+
 const Item = require('../models/item'); // item schema
 const Lending = require('../models/lending'); // lending schema
 const Reservation = require('../models/reservation');
-
-/* setting up the router */
-const router = express.Router();
+const UsersController = require('../controllers/usersController')
 
 
 
-/* /api/items routes */
+
+/* Login routes */
+router.route('/login')
+	.post(UsersController.login);
+
+router.route('/signup')
+	.post(UsersController.signup);
+
+
+
+
+/* Items routes */
 /* get items */
 router.get('/items', (req, res)=>{
 	Item.find({}).then((items)=>{
@@ -39,7 +51,7 @@ router.delete('/items/:id', (req, res, next)=>{
 
 
 
-/* /api/lendings routes */
+/* Lendings routes */
 /* get lendings*/
 router.get('/lendings', (req, res, next)=>{
 	Lending.find({}).then((items)=>{
@@ -83,7 +95,7 @@ router.delete('/lendings/:id', (req, res, next)=>{
 });
 
 
-/* reservation routes */
+/* Reservation routes */
 /* get reservation */
 router.get('/reservations/', (req, res, next)=>{
 	Reservation.find({}).then((items)=>{
