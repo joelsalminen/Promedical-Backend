@@ -37,24 +37,24 @@ router.route('/items/:id')
 
 /* Lendings routes */
 router.route('/lendings')
-	.get(LendingsController.getLendings);
+	.get(passportJWT, LendingsController.getLendings);
 
 router.route('/lendings')
-	.post(LendingsController.postLending);
+	.post(passportJWT, LendingsController.postLending);
 
 router.route('/lendings/:id')
-	.delete(LendingsController.deleteLending);
+	.delete(passportJWT, LendingsController.deleteLending);
 
 
 /* Reservation routes */
 router.route('/reservations/')
-	.get(ReservationController.getReservations);
+	.get(passportJWT, ReservationController.getReservations);
 
 router.route('/reservations')
-	.post(ReservationController.postReservation);
+	.post(passportJWT, ReservationController.postReservation);
 
 router.route('/reservations/:id')
-	.delete(ReservationController.deleteReservation);
+	.delete(passportJWT, ReservationController.deleteReservation);
 
 module.exports = router;
 
