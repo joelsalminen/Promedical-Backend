@@ -8,7 +8,7 @@ module.exports = {
 				res.send(items);
 			});
 	},
-	postItems: async (req, res, next)=>{
+	postItem: async (req, res, next)=>{
 		Item.create(req.body)
 			.then(item=>{
 				res.send(item);
@@ -28,17 +28,3 @@ module.exports = {
 	}
 
 }
-
-// , (req, res, next)=>{
-// 	Item.findByIdAndRemove({_id: req.params.id}).then((item)=>{
-// 		res.send(item);
-// 	}).catch(next);
-// });
-
-
-
-// router.post('/items', (req, res, next)=>{
-// 	Item.create(req.body).then((item)=>{
-// 		res.send(item);
-// 	}).catch(next);
-// });
