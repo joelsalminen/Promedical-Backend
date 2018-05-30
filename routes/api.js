@@ -2,6 +2,7 @@ const express = require('express');
 /* setting up the router */
 const router = require('express-promise-router')();
 
+const {validateBody ,schemas} = require('../helpers/routeHelpers')
 const UsersController = require('../controllers/usersController');
 const ItemsController = require('../controllers/itemsController');
 const ReservationController = require('../controllers/reservationsController');
@@ -9,10 +10,10 @@ const LendingsController = require('../controllers/lendingsController');
 
 /* Login routes */
 router.route('/login')
-	.post(UsersController.login);
+	.post(validateBody(schemas.authSchema), UsersController.login);
 
 router.route('/signup')
-	.post(UsersController.signup);
+	.post(validateBody(schemas.authSchema), UsersController.signup);
 
 
 /* Items routes */

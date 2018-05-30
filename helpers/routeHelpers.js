@@ -21,8 +21,8 @@ module.exports = {
 			email: Joi.string().email().required(),
 			password: Joi.string().required()
 		}),
-		itemSchema: Joi.object().key({
-			name: Joi.String().required(),
+		itemSchema: Joi.object().keys({
+			name: Joi.string().required(),
 			serial: Joi.number().integer().required()
 		})
 	}
