@@ -35,56 +35,24 @@ router.route('/items/:id')
 router.route('/lendings')
 	.get(LendingsController.getLendings);
 
-
-
-/* post lendings */
 router.route('/lendings')
 	.post(LendingsController.postLending);
 
-
-
-/* delete lendings */
-router.delete('/lendings/:id', (req, res, next)=>{
-	Lending.findByIdAndRemove({_id: req.params.id}).then((item)=>{
-		res.send(item);
-	}).catch(next);
-});
+router.route('/lendings/:id')
+	.delete(LendingsController.deleteLending);
 
 
 /* Reservation routes */
-/* get reservation */
-router.get('/reservations/', (req, res, next)=>{
-	Reservation.find({}).then((items)=>{
-		res.send(items);
-	});
-});
-
-/* post reservation */
-router.post('/reservations', (req, res, next)=>{
-	/* parse data */
-	const data = {
-		customer: req.body.customer,
-		contactInfo: req.body.contactInfo,
-		startDate: req.body.startDate,
-		returnDate: req.body.returnDate,
-		item: {
-			_id: req.body.itemId,
-			serial: req.body.itemSerial,
-			name: req.body.itemName
-		}
-	}
-	Reservation.create(data).then((item)=>{
-		res.send(data);
-	});
-});
+router.route('/reservations/')
+	.get(ReservationController.getReservations);
 
 
-/* delete reservation */
-router.delete('/reservations/:id', (req, res, next)=>{
-	Reservation.findByIdAndRemove({_id: req.params.id}).then((item)=>{
-		res.send(item);
-	}).catch(next);
-});
+router.route('/reservations')
+	.post(ReservationController.postReservation);
+
+router.route('/reservations/:id')
+	.delete(ReservationController.deleteReservation);
+
 
 
 module.exports = router;
