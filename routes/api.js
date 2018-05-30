@@ -9,11 +9,13 @@ const UsersController = require('../controllers/usersController');
 const ItemsController = require('../controllers/itemsController');
 const ReservationController = require('../controllers/reservationsController');
 const LendingsController = require('../controllers/lendingsController');
-const passPortJWT = passport.authenticate('jwt', {session: false});
+const passportJWT = passport.authenticate('jwt', {session: false});
+const passportSignIn = passport.authenticate('local', {session: false})
+
 
 /* Login routes */
 router.route('/login')
-	.post(validateBody(schemas.authSchema), passport.authenticate('local', {session: false}), UsersController.login);
+	.post(validateBody(schemas.authSchema), passportSignIn, UsersController.login);
 
 router.route('/signup')
 	.post(validateBody(schemas.authSchema), UsersController.signup);
@@ -21,16 +23,16 @@ router.route('/signup')
 
 /* Items routes */
 router.route('/items')
-	.get(passPortJWT, ItemsController.getItems);
+	.get(passportJWT, ItemsController.getItems);
 
 router.route('/items')
-	.post(passPortJWT, validateBody(schemas.itemSchema), ItemsController.postItem);
+	.post(passportJWT, validateBody(schemas.itemSchema), ItemsController.postItem);
 
 router.route('/items/:id')
-	.put(passPortJWT, ItemsController.putItem);
+	.put(passportJWT, ItemsController.putItem);
 
 router.route('/items/:id')
-	.delete(passPortJWT, ItemsController.deleteItem);
+	.delete(passportJWT, ItemsController.deleteItem);
 
 
 /* Lendings routes */

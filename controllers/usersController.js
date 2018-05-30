@@ -2,6 +2,7 @@ const JWT = require('jsonwebtoken');
 const User = require('../models/user');
 const {JWT_SECRET} = require('../configuration');
 
+/* Create a new token */
 signToken = (user) => {
 	return JWT.sign({
 		iss: 'Promedical',
@@ -33,8 +34,9 @@ module.exports = {
 	},
 
 	login: async (req, res, next) =>{
-		//generate token
-		console.log("login called");
+		// Generate a token
+		const token = signToken(req.user);
+		res.send({token});
 	}
 
 }
