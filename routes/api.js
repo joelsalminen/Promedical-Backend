@@ -29,19 +29,12 @@ router.route('/items')
 	.post(ItemsController.postItems);
 
 /* put items */
-router.put('/items/:id', (req, res, next)=>{
-	Item.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}).then((item)=>{
-		res.send(item);
-	}).catch(next);
-});
+router.route('/items/:id')
+	.put(ItemsController.putItem);
 
 /* delete items */
-router.delete('/items/:id', (req, res, next)=>{
-	Item.findByIdAndRemove({_id: req.params.id}).then((item)=>{
-		res.send(item);
-	}).catch(next);
-});
-
+router.route('/items/:id')
+	.delete(ItemsController.deleteItem);
 
 
 /* Lendings routes */
