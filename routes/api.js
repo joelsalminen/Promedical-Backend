@@ -2,11 +2,11 @@ const express = require('express');
 /* setting up the router */
 const router = require('express-promise-router')();
 
-const Item = require('../models/item'); // item schema
+
 const Lending = require('../models/lending'); // lending schema
 const Reservation = require('../models/reservation');
-const UsersController = require('../controllers/usersController')
-
+const UsersController = require('../controllers/usersController');
+const ItemsController = require('../controllers/itemsController');
 
 
 
@@ -21,19 +21,12 @@ router.route('/signup')
 
 
 /* Items routes */
-/* get items */
-router.get('/items', (req, res)=>{
-	Item.find({}).then((items)=>{
-		res.send(items);
-	});
-});
+router.route('/items')
+	.get(ItemsController.getItems);
 
 /* post items */
-router.post('/items', (req, res, next)=>{
-	Item.create(req.body).then((item)=>{
-		res.send(item);
-	}).catch(next);
-});
+router.route('/items')
+	.post(ItemsController.postItems);
 
 /* put items */
 router.put('/items/:id', (req, res, next)=>{
