@@ -16,6 +16,7 @@ module.exports = {
 
 		}
 	},
+	/* validation schemas*/
 	schemas: {
 		authSchema: Joi.object().keys({
 			email: Joi.string().email().required(),
