@@ -15,6 +15,19 @@ const userSchema = new Schema({
 	}
 });
 
+userSchema.pre('save', async function(next){
+	try{
+		/* Generage salt */
+		const salt = await bcrypt.genSalt(10);
+		const passwordHash = await bcrypt.hash(this.password, salt);
+		this.password = passwordHash;
+		next();
+
+	}catch(error){
+		next(error);
+	}
+});
+
 
 const User = mongoose.model('user', userSchema);
 
