@@ -13,7 +13,7 @@ const passPortJWT = passport.authenticate('jwt', {session: false});
 
 /* Login routes */
 router.route('/login')
-	.post(validateBody(schemas.authSchema), UsersController.login);
+	.post(validateBody(schemas.authSchema), passport.authenticate('local', {session: false}), UsersController.login);
 
 router.route('/signup')
 	.post(validateBody(schemas.authSchema), UsersController.signup);
