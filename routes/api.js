@@ -9,6 +9,7 @@ const UsersController = require('../controllers/usersController');
 const ItemsController = require('../controllers/itemsController');
 const ReservationController = require('../controllers/reservationsController');
 const LendingsController = require('../controllers/lendingsController');
+const passPortJWT = passport.authenticate('jwt', {session: false});
 
 /* Login routes */
 router.route('/login')
@@ -20,16 +21,16 @@ router.route('/signup')
 
 /* Items routes */
 router.route('/items')
-	.get(ItemsController.getItems);
+	.get(passPortJWT, ItemsController.getItems);
 
 router.route('/items')
-	.post(validateBody(schemas.itemSchema), ItemsController.postItem);
+	.post(passPortJWT, validateBody(schemas.itemSchema), ItemsController.postItem);
 
 router.route('/items/:id')
-	.put(ItemsController.putItem);
+	.put(passPortJWT, ItemsController.putItem);
 
 router.route('/items/:id')
-	.delete(ItemsController.deleteItem);
+	.delete(passPortJWT, ItemsController.deleteItem);
 
 
 /* Lendings routes */
