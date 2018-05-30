@@ -2,8 +2,6 @@ const express = require('express');
 /* setting up the router */
 const router = require('express-promise-router')();
 
-
-
 const UsersController = require('../controllers/usersController');
 const ItemsController = require('../controllers/itemsController');
 const ReservationController = require('../controllers/reservationsController');
@@ -46,14 +44,11 @@ router.route('/lendings/:id')
 router.route('/reservations/')
 	.get(ReservationController.getReservations);
 
-
 router.route('/reservations')
 	.post(ReservationController.postReservation);
 
 router.route('/reservations/:id')
 	.delete(ReservationController.deleteReservation);
-
-
 
 module.exports = router;
 
