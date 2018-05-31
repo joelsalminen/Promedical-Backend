@@ -15,10 +15,10 @@ const passportSignIn = passport.authenticate('local', {session: false})
 
 /* Login routes */
 router.route('/login')
-	.post(validateBody(schemas.authSchema), passportSignIn, UsersController.login);
+	.post(validateBody(schemas.loginSchema), passportSignIn, UsersController.login);
 
 router.route('/signup')
-	.post(validateBody(schemas.authSchema), UsersController.signup);
+	.post(validateBody(schemas.signupSchema), UsersController.signup);
 
 
 /* Items routes */
