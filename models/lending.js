@@ -19,6 +19,10 @@ const LendingSchema = new Schema({
 			type: String
 		}
 	},
+	contactInfo: {
+		type: String,
+		required: [true, 'Customer contact info is required']
+	},
 	startDate: {
 		type: String,
 		required: [true, 'Starting date field is required']

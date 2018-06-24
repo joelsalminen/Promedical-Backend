@@ -23,7 +23,6 @@ module.exports = {
 				name: req.body.itemName
 			}
 		};
-
 		/* store said data in database */
 		Lending.create(data).then((lending)=>{
 			res.send(data);
