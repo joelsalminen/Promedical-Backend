@@ -28,6 +28,31 @@ module.exports = {
 			res.send(data);
 		}).catch(next);
 	},
+	putLending: async (req, res, next) => {
+		/* parse data */
+		const data = {
+			_id: req.body._id,
+			lender: req.body.lender,
+			customer: req.body.customer,
+			contactInfo: req.body.contactInfo,
+			startDate: req.body.startDate,
+			returnDate: req.body.returnDate,
+			lendType: req.body.lendType,
+			price: req.body.price,
+			item: {
+				serial: req.body.itemSerial,
+				name: req.body.itemName
+			}
+		};
+		Lending.findByIdAndUpdate(
+			{ _id: data._id}, 
+			data,
+			{ new: true }
+		)
+			.then(lending => {
+				res.send(lending);
+			}).catch(next);
+	},
 	deleteLending: async (req, res, next)=>{
 		Lending.findByIdAndRemove({_id: req.params.id}).then((item)=>{
 			res.send(item);

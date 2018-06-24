@@ -43,6 +43,9 @@ router.route('/lendings')
 	.post(passportJWT, LendingsController.postLending);
 
 router.route('/lendings/:id')
+	.put(passportJWT, LendingsController.putLending);
+
+router.route('/lendings/:id')
 	.delete(passportJWT, LendingsController.deleteLending);
 
 
