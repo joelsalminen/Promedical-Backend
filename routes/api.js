@@ -9,6 +9,8 @@ const UsersController = require('../controllers/usersController');
 const ItemsController = require('../controllers/itemsController');
 const ReservationController = require('../controllers/reservationsController');
 const LendingsController = require('../controllers/lendingsController');
+const DocumentController = require('../controllers/documentController');
+
 const passportJWT = passport.authenticate('jwt', {session: false});
 const passportSignIn = passport.authenticate('local', {session: false})
 
@@ -58,6 +60,12 @@ router.route('/reservations')
 
 router.route('/reservations/:id')
 	.delete(passportJWT, ReservationController.deleteReservation);
+
+/* Document routes */
+router.route('/documents/')
+	.get(DocumentController.getDocuments)
+router.route('/documents/')
+	.post(DocumentController.postDocument)
 
 module.exports = router;
 
