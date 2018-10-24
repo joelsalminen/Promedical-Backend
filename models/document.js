@@ -30,9 +30,9 @@ const DocumentSchema = new Schema({
 	price: {
 		type: Number
 	},
-	// items: [{
-		
-	// }]
+	itemName: {
+		type: String
+	}
 });
 
 const Document = mongoose.model('document', DocumentSchema);

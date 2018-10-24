@@ -12,7 +12,7 @@ module.exports = {
 		console.log(req.body)
 		Document.create(req.body)
 			.then(o => {
-				res.send(o)
+				res.send(o);
 			}).catch(next);
 	}
 	// putItem: async (req, res, next)=>{
